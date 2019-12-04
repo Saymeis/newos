@@ -81,7 +81,7 @@ clear
 apt install -y zenmap
 clear
 
-apt install -y htop atop iotop dnstop terminator
+apt install -y htop atop iotop dnstop terminator openvpn
 clear
 # Кофиги
 cp -r fish/ ~/.config/
