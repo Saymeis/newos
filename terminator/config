@@ -1,0 +1,21 @@
+[global_config]
+  scroll_tabbar = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#040077"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    custom_command = fish
+    foreground_color = "#fce94f"
+    use_custom_command = True
