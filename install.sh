@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-
-
 clear
 sleep 1
-apt update
-apt dist-upgrade -y
-apt install -y figlet
+sudo apt update
+sudo apt dist-upgrade -y
+sudo apt install -y figlet
 clear
 sleep 1
 figlet HI
@@ -16,39 +14,19 @@ sleep 1
 figlet FRIEND
 sleep 5
 clear
-
-# ____
-#|  _ \  _____      ___ __ | | ___   __ _  __| |  _   _| |_(_) |__
-#| | | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` | | | | | __| | / __|
-#| |_| | (_) \ V  V /| | | | | (_) | (_| | (_| | | |_| | |_| | \__ \
-#|____/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|  \__,_|\__|_|_|___/
-
-#
-# _   _| |_(_) |___
-#| | | | __| | / __|
-#| |_| | |_| | \__ \
-# \__,_|\__|_|_|___/
 figlet Download
 sleep 2
 figlet Utils
 sleep 4
 clear
 
-# Download utils
-apt install --download-only ncdu
-apt install --download-only ccze
-apt install --download-only fish
-apt install --download-only nmap
-apt install --download-only zenmap
-clear
-
-# Install sublime 
+# Install sublime
 # https://www.sublimetext.com/docs/3/linux_repositories.html#apt
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-apt install apt-transport-https
-echo "deb https://download.sublimetext.com/ apt/stable/" |  tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 apt update
-apt install -y sublime-text
+sudo apt install -y sublime-text
 
 clear
 # Install Pycharm pycharm-community-2019.1.3
@@ -57,35 +35,51 @@ clear
 #./pycharm-community-2019.1.3bin/pycharm.sh
 
 # Update list
-apt update
+sudo apt update
 
 # Install ncdu
 # Анализа дискового пространства
-apt install -y ncdu
+sudo apt install -y ncdu
 clear
+
 # Install ccze
 #Утилита, украшающая логи
-apt  install -y ccze
+sudo apt  install -y ccze
 clear
-# Install fish
-# Bash оболочка
-apt install -y fish
-clear
-# Install nmap
-# Катко - сканирование портов
-apt install -y nmap
-clear
+
+
+
 # Install zenmap
 # Тоже самое что nmap, только с графической оболочкой
 # Катко - сканирование портов
-apt install -y zenmap
+sudo apt install -y zenmap
 clear
 
-apt install -y htop atop iotop dnstop terminator openvpn
+#Чутка мониторинга
+sudo apt install -y htop
+sudo apt install -y atop
+sudo apt install -y iotop
+sudo apt install -y dnstop
+clear
+
+#Other terminal & shell
+apt install -y terminator
+apt install -y fish
+clear
+
+#VPN
+sudo apt install -y openvpn
+clear
+
+
+#Scanning host & ports
+sudo apt install -y nmap
+sudo apt install -y zenmap
+sudo apt install -y masscan
 clear
 # Кофиги
 cp -r fish/ ~/.config/
-cp -r terminator/config /home/saymes/.config/terminator/
+cp -r terminator/config ~/.config/terminator/
 clear
 sleep 2
 figlet GOOD
