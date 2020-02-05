@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+#log
+touch /tmp/newos.log
+date >/tmp/newos.log
+
 clear
 sleep 1
-sudo apt update
-sudo apt dist-upgrade -y
-sudo apt install -y figlet
+sudo apt update >>/tmp/newos.log
+sudo apt dist-upgrade -y >>/tmp/newos.log
+sudo apt install -y figlet >>/tmp/newos.log
 clear
 sleep 1
 figlet HI
@@ -23,10 +27,10 @@ clear
 # Install sublime
 # https://www.sublimetext.com/docs/3/linux_repositories.html#apt
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt install apt-transport-https
+sudo apt install apt-transport-https >>/tmp/newos.log
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-apt update
-sudo apt install -y sublime-text
+apt update >>/tmp/newos.log
+sudo apt install -y sublime-text >>/tmp/newos.log
 
 clear
 # Install Pycharm pycharm-community-2019.1.3
@@ -34,17 +38,15 @@ clear
 #tar xvzf ycharm-community-2019.1.3.tar.gz
 #./pycharm-community-2019.1.3bin/pycharm.sh
 
-# Update list
-sudo apt update
 
 # Install ncdu
 # Анализа дискового пространства
-sudo apt install -y ncdu
+sudo apt install -y ncdu >>/tmp/newos.log
 clear
 
 # Install ccze
-#Утилита, украшающая логи
-sudo apt  install -y ccze
+# Утилита, украшающая логи
+sudo apt  install -y ccze >>/tmp/newos.log
 clear
 
 
@@ -52,36 +54,48 @@ clear
 # Install zenmap
 # Тоже самое что nmap, только с графической оболочкой
 # Катко - сканирование портов
-sudo apt install -y zenmap
+sudo apt install -y zenmap >>/tmp/newos.log
 clear
 
-#Чутка мониторинга
-sudo apt install -y htop
-sudo apt install -y atop
-sudo apt install -y iotop
-sudo apt install -y dnstop
+# Чутка мониторинга
+sudo apt install -y htop >>/tmp/newos.log
+sudo apt install -y atop >>/tmp/newos.log
+sudo apt install -y iotop >>/tmp/newos.log
+sudo apt install -y dnstop >>/tmp/newos.log
+sudo apt install -y iftop >>/tmp/newos.log
 clear
 
-#Other terminal & shell
-apt install -y terminator
-apt install -y fish
+# Other terminal & shell
+apt install -y terminator >>/tmp/newos.log
+apt install -y fish >>/tmp/newos.log
 clear
 
-#VPN
-sudo apt install -y openvpn
+# VPN
+sudo apt install -y openvpn >>/tmp/newos.log
 clear
 
-
-#Scanning host & ports
-sudo apt install -y nmap
-sudo apt install -y zenmap
-sudo apt install -y masscan
+# Scanning host & ports
+sudo apt install -y nmap >>/tmp/newos.log
+sudo apt install -y zenmap >>/tmp/newos.log
+sudo apt install -y masscan >>/tmp/newos.log
 clear
+
+# docker
+# curl -fsSL https://get.docker.com -o get-docker.sh  >>/tmp/newos.log
+sudo sh get-docker.sh >>/tmp/newos.log
+
+
 # Кофиги
-cp -r fish/ ~/.config/
+sudo cp sudoers /etc/sudoers
+sudo chmod 440 /etc/sudoers 
+cp -r fish/ ~/.config/ 
 cp -r terminator/config ~/.config/terminator/
+
+
 clear
 sleep 2
 figlet GOOD
 figlet LUCK
-sleep 10
+sleep 5
+
+sudo less /tmp/newos.log
